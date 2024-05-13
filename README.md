@@ -1,0 +1,3 @@
+PD324_Team1.mssql.somee.com
+dbtest111_SQLLogin_1
+ns5pnub5cb
