@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace FinancingManager.CostRepository
+namespace FinancingManager.Repositories
 {
     public class CostRepository
     {
