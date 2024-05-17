@@ -5,7 +5,6 @@ using FinancingManager.Entities;
 using FinancingManager.Models;
 using FinancingManager.Repositories;
 
-
 namespace FinancingManager.Services
 {
     public class CostService

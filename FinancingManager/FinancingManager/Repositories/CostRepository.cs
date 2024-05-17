@@ -6,46 +6,59 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace FinancingManager.Repositories
 {
     public class CostRepository
     {
         private readonly AppDbContext context;
 
-        public CostRepository(AppDbContext context)
+         public CostRepository(AppDbContext context)
         {
             this.context = context;
         }
-
-        public void AddCost(CostEntity cost)
+      
+        public void Add(CostEntity entity)
         {
-            context.Costs.Add(cost);
+            context.Add(entity);
             context.SaveChanges();
         }
 
-        public void UpdateCost(CostEntity cost)
+        public async Task AddAsync(CostEntity entity)
         {
-            context.Costs.Update(cost);
-            context.SaveChanges();
+            context.Add(entity);
+            await context.SaveChangesAsync();
         }
 
-        public void DeleteCost(int id)
+        public async Task<CostEntity?> GetById(int id)
         {
-            var cost = context.Costs.Find(id);
-            if (cost != null)
+            return await context.Costs.FirstOrDefaultAsync(c => c.Id == id);
+        }
+
+        public async Task RemoveAsync(int id)
+        {
+            var entity = await GetById(id);
+
+            if (entity != null)
             {
-                context.Costs.Remove(cost);
-                context.SaveChanges();
+                await RemoveAsync(entity);
             }
         }
-        public CostEntity GetCostById(int id)
+
+        public async Task RemoveAsync(CostEntity entity)
         {
-            return context.Costs.Find(id);
+            context.Remove(entity);
+            await context.SaveChangesAsync();
         }
-        public IEnumerable<CostEntity> GetAllCosts()
+
+        public async Task UpdateAsync(CostEntity entity)
         {
-            return context.Costs.ToList();
+            context.Update(entity);
+            await context.SaveChangesAsync();
+        }
+
+        public IQueryable<CostEntity> GetAll()
+        {
+            return context.Costs.AsNoTracking().Include(c => c.User);
         }
     }
 }

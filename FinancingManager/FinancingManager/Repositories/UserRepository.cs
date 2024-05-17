@@ -1,11 +1,6 @@
 ﻿using FinancingManager.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace FinancingManager.UserRepository
+namespace FinancingManager.Repositories
 {
     public class UserRepository
     {
@@ -19,10 +14,10 @@ namespace FinancingManager.UserRepository
         public bool Add(UserEntity entity)
         {
             context.Users.Add(entity);
-            return context.SaveChanges() != 0; 
+            return context.SaveChanges() != 0;
         }
 
-        public bool Update(UserEntity entity) 
+        public bool Update(UserEntity entity)
         {
             context.Users.Update(entity);
             return context.SaveChanges() != 0;
