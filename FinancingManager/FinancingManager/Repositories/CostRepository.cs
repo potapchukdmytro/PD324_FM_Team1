@@ -1,10 +1,5 @@
 ﻿using FinancingManager.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FinancingManager.Repositories
 {
@@ -12,11 +7,11 @@ namespace FinancingManager.Repositories
     {
         private readonly AppDbContext context;
 
-         public CostRepository(AppDbContext context)
+        public CostRepository(AppDbContext context)
         {
             this.context = context;
         }
-      
+
         public void Add(CostEntity entity)
         {
             context.Add(entity);

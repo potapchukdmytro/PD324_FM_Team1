@@ -1,4 +1,5 @@
 ﻿using FinancingManager.Models;
+using FinancingManager.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,9 @@ namespace FinancingManager.Service
 {
     public class UserService
     {
-        private readonly UserRepository.UserRepository userRepository; 
+        private readonly UserRepository userRepository; 
 
-        public UserService(UserRepository.UserRepository userRepository)
+        public UserService(UserRepository userRepository)
         {
             this.userRepository = userRepository;
         }

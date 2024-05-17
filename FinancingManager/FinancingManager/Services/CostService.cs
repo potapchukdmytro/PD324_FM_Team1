@@ -23,30 +23,31 @@ namespace FinancingManager.Services
                 Name = cost.Name,
                 Currency = cost.Currency,
                 Cost = cost.Cost,
-                CostType = cost.CostType
+                CostType = cost.CostType,
+                UserId = 1
             };
-            costRepository.AddCost(costEntity);
+            costRepository.Add(costEntity);
             
         }
-        public void UpdateCost(CostModel cost) 
+        public async void UpdateCost(CostModel cost) 
         {
-            var costEntity = costRepository.GetCostById(cost.Id);
+            var costEntity = await costRepository.GetById(cost.Id);
             if (costEntity != null)
             {
                 costEntity.Name = cost.Name;
                 costEntity.Currency = cost.Currency;
                 costEntity.Cost = cost.Cost;
-                costRepository.UpdateCost(costEntity);
+                await costRepository.UpdateAsync(costEntity);
             }
         }
-        public void DeleteCost(int id)
+        public async void DeleteCost(int id)
         {
-            costRepository.DeleteCost(id);
+            await costRepository.RemoveAsync(id);
         }
 
-        public CostModel GetCostById(int id)
+        public async Task<CostModel?> GetCostById(int id)
         {
-            var costEntity = costRepository.GetCostById(id);
+            var costEntity = await costRepository.GetById(id);
             if (costEntity != null)
             {
                 return new CostModel
@@ -62,7 +63,7 @@ namespace FinancingManager.Services
         }
         public IEnumerable<CostModel> GetAllCosts()
         {
-            var costEntities = costRepository.GetAllCosts();
+            var costEntities = costRepository.GetAll();
             return costEntities.Select(c => new CostModel
             {
                 Id = c.Id,
