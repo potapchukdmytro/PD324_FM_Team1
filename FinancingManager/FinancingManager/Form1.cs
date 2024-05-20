@@ -34,5 +34,11 @@ namespace FinancingManager
             dataGridView1.DataSource = costService.GetAllCosts().ToList();
 
         }
+
+        private void RegButton_Click(object sender, EventArgs e)
+        {
+            Registration reg = new Registration();
+            reg.ShowDialog();
+        }
     }
 }

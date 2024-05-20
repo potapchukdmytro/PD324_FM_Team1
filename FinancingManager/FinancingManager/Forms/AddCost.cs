@@ -35,5 +35,10 @@ namespace FinancingManager.Forms
             costService.AddCost(model);
             this.Close();
         }
+
+        private void rejectButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
