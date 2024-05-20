@@ -40,5 +40,11 @@ namespace FinancingManager
             Registration reg = new Registration();
             reg.ShowDialog();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Login reg = new Login();
+            reg.ShowDialog();
+        }
     }
 }

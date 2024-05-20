@@ -11,32 +11,29 @@ using System.Windows.Forms;
 
 namespace FinancingManager.Forms
 {
-    public partial class Registration : Form
+    public partial class Login : Form
     {
-        public Registration()
+        public Login()
         {
             InitializeComponent();
         }
+
         private void rejectButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-        
+
         private void acceptButton_Click(object sender, EventArgs e)
         {
-            RegisterModel model = new RegisterModel {
-                FirstName = firstNameTextBox.ToString(),
-                LastName = lastNameTextBox.ToString(),
-                UserName = nicknameTextBox.ToString(),
-                Password = passwordTextBox.ToString(),
-                Email = mailTextBox.ToString()
+            LoginModel model = new LoginModel
+            {
+                Login = nicknameTextBox.ToString(),
+                Password = passwordTextBox.ToString()
             };
             // Далі не знаю куди це передавати тому: {
-            MessageBox.Show("User added successfully");
+            MessageBox.Show("User authorized successfully");
             this.Close();
             // }
         }
-
-
     }
 }
